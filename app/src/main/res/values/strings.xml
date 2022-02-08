@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">assignment</string>
+    <string name="login">LOGIN</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="checkbox">Remember me</string>
+    <string name="register">REGISTER</string>
+    <string name="registration">REGISTRATION</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Mobile Number</string>
+    <string name="welcome">Hey! Welcome</string>
+</resources>
