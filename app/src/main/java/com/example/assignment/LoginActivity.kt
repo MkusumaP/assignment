@@ -13,13 +13,22 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.login)
 
         val loginButton: Button = findViewById(R.id.login_button)
+
+        val firstNameText = intent.extras?.getString("KEY_FIRST_NAME")
+        val userNameEditText: EditText = findViewById(R.id.username)
+        userNameEditText.setText(firstNameText)
+
         loginButton.setOnClickListener {
             val username = findViewById<EditText>(R.id.username).text
-            if (username == null || username.toString().isEmpty()) {
-                Toast.makeText(this, "please enter the username", Toast.LENGTH_SHORT).show()
+            val password = findViewById<EditText>(R.id.et_password).text
+            if (username == null || username.toString()
+                    .isEmpty() || password == null || password.toString().isEmpty()
+            ) {
+                Toast.makeText(this, "please fill the username and password!", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 val bundle = Bundle()
-                bundle.putString("KEY_username", username.toString())
+                bundle.putString("KEY_USERNAME", username.toString())
                 startActivity(MainActivity::class.java, bundle)
             }
         }

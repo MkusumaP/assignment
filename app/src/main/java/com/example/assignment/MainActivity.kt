@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val username = intent.extras?.getString("KEY_username")
+        val username = intent.extras?.getString("KEY_USERNAME")
         val loginTextView = findViewById<TextView>(R.id.tv_activity_view)
         loginTextView.text = username.toString()
     }
