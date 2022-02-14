@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
         userNameEditText.setText(firstNameText)
 
         loginButton.setOnClickListener {
-            val username = findViewById<EditText>(R.id.username).text
+            val username = userNameEditText.text
             val password = findViewById<EditText>(R.id.et_password).text
             if (username == null || username.toString()
                     .isEmpty() || password == null || password.toString().isEmpty()
