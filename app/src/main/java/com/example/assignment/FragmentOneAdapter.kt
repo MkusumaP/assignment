@@ -10,12 +10,22 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
 
 
-class CustomAdapter(private val context: Context, private val list: ArrayList<String>) :RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FragmentOneAdapter(
+    private val context: Context,
+    private val list: ArrayList<String>,
+    private val listener: FragmentOneListener
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvItemLabel: TextView = itemView.findViewById(R.id.tv_item_label)
+        var tvItemDescription: TextView = itemView.findViewById(R.id.tv_item_description)
+        var viewDataButton: Button = itemView.findViewById(R.id.btn_view_data)
         fun bind(position: Int) {
-            tvItemLabel.text = list[position]
-
+            val message = list[position]
+            tvItemLabel.text = message
+            tvItemDescription.text = "Description of the item ${position + 1}"
+            viewDataButton.setOnClickListener {
+                listener.onButtonClicked(tvItemDescription.text.toString())
+            }
         }
     }
 
@@ -30,4 +40,8 @@ class CustomAdapter(private val context: Context, private val list: ArrayList<St
     override fun getItemCount(): Int {
         return list.size
     }
+}
+
+interface FragmentOneListener {
+    fun onButtonClicked(data: String)
 }
