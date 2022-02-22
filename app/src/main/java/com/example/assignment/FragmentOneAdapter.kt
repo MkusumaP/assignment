@@ -42,6 +42,8 @@ class FragmentOneAdapter(
     }
 }
 
+// High Order Functions
+
 interface FragmentOneListener {
     fun onButtonClicked(data: String)
 }

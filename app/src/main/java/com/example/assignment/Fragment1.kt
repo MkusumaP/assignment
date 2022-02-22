@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assignment.ui.main.FragmentViewModel
@@ -39,6 +40,7 @@ class Fragment1 : Fragment(), FragmentOneListener {
 
         val adapter = FragmentOneAdapter(requireContext(), data, this)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),LinearLayoutManager.VERTICAL))
         recyclerView.adapter = adapter
     }
 
