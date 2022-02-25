@@ -5,8 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.signature.ObjectKey
 import java.util.ArrayList
 
 
@@ -18,14 +23,20 @@ class FragmentOneAdapter(
     private inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvItemLabel: TextView = itemView.findViewById(R.id.tv_item_label)
         var tvItemDescription: TextView = itemView.findViewById(R.id.tv_item_description)
-        var viewDataButton: Button = itemView.findViewById(R.id.btn_view_data)
+        var imageView: ImageView = itemView.findViewById(R.id.img_view_item_icon)
         fun bind(position: Int) {
             val message = list[position]
+            val imageUrl = "https://source.unsplash.com/random"
             tvItemLabel.text = message
             tvItemDescription.text = "Description of the item ${position + 1}"
-            viewDataButton.setOnClickListener {
+            tvItemLabel.rootView.setOnClickListener {
                 listener.onButtonClicked(tvItemDescription.text.toString())
             }
+Glide.with(context)
+    .load(imageUrl)
+    .apply(RequestOptions().skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE))
+    .signature(ObjectKey(position))
+    .into(imageView)
         }
     }
 
